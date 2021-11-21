@@ -16,15 +16,21 @@ variables:
 
 steps:
   
-  - task: DotNetCoreCLI@2
+  - task: DotNetCoreCLI@1
     inputs:
       command: 'restore'
       projects: '**/*.sln'
-      feedsToUse: 'select'
-      restoreDirectory: '$(Build.ArtifactStagingDirectory)'
   - task: DotNetCoreCLI@2
     inputs:
       command: 'build'
       projects: '**/*.sln'
       workingDirectory: '$(Build.ArtifactStagingDirectory)'
+  
+  - task: DotNetCoreCLI@2
+    inputs:
+      command: 'publish'
+      publishWebProjects: true
+      workingDirectory: '$(Build.ArtifactStagingDirectory)'
+   
+  
   
