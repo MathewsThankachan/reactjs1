@@ -33,8 +33,4 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
-- task: CopyFiles@2
-  inputs:
-    SourceFolder: '$(build.artifactStagingDirectory)'
-    Contents: '**'
-    TargetFolder: '$(build.artifactStagingDirectory)'
+- task: PublishBuildArtifacts@1
